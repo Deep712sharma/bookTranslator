@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[19]:
-
-
 from googletrans import Translator
 from os import chdir, getcwd, listdir, makedirs
 from os.path import join,splitext
@@ -21,44 +15,20 @@ import io
 from pdf2image import convert_from_path
 import re
 
-
-# In[20]:
-
-
 current_dir = getcwd()
-
-
-# In[21]:
-
 
 target_folder = join(current_dir, r"C:\Users\acer\Desktop\test")
 print("Target Folder Path:", target_folder)
-
-
-# In[91]:
-
 
 # List files and subdirectories within a folder
 file_list = listdir(target_folder)
 print("Files in Target Folder:", file_list)
 
-
-# In[45]:
-
-
 stopwords = list(STOP_WORDS)
 nlp = spacy.load('en_core_web_sm')
 content = ""
 
-
-# In[34]:
-
-
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
-
-# In[35]:
-
 
 def get_Language(argument):
     switcher = {
@@ -70,10 +40,6 @@ def get_Language(argument):
         1: "de"
     }
     return switcher.get(argument, "en")
-
-
-# In[36]:
-
 
 def getSelection():
     while True:
@@ -89,15 +55,7 @@ def getSelection():
             return userInput
             break
 
-
-# In[37]:
-
-
 translator = Translator()
-
-
-# In[93]:
-
 
 print("0. ENGLISH")
 print("6. HINDI")
@@ -108,10 +66,6 @@ print("1. GERMAN")
 tran = getSelection()
 lang = get_Language(tran)
 print("Selected Language:", lang)
-
-
-# In[94]:
-
 
 for i in file_list:
     path = r"C:\Users\acer\Desktop\test\{}".format(i)
@@ -195,6 +149,3 @@ for i in file_list:
                             translated_text = translator.translate(page_content, dest=lang)
                             print(translated_text.text)
                             #print("Detected Text:", preprocessed_content)
-
-
-# ### 
